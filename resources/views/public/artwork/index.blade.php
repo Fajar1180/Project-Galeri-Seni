@@ -45,9 +45,14 @@
         @if(isset($items) && count($items) > 0)
             <div class="row">
                 @foreach($items as $item)
+                    @php
+                        $imageUrl = $item->image
+                            ? asset('storage/' . $item->image)
+                            : 'https://via.placeholder.com/600x400?text=Artwork';
+                    @endphp
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="https://picsum.photos/400/300?random={{ $loop->index }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                            <img src="{{ $imageUrl }}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="{{ $item->title ?? 'Karya seni' }}">
                             <div class="card-body">
                                 <h5>{{ $item->title ?? 'Karya ' . ($loop->index + 1) }}</h5>
                                 <p class="text-muted"><i class="fas fa-user"></i> {{ $item->artist->name ?? 'Seniman' }}</p>

@@ -2,38 +2,55 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
 
-class RegisterController extends Controller
+class RegisteredUserController extends Controller
 {
-    // Menampilkan form daftar
-    public function showRegistrationForm()
+    /**
+     * Display the registration view.
+     */
+    public function create(): View
     {
         return view('auth.register');
     }
 
-    // Proses pendaftaran
-    public function register(Request $request)
+    /**
+     * Handle an incoming registration request.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        // Convert email to lowercase before storing
+        $validated['email'] = strtolower($validated['email']);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
         ]);
 
-        // Login otomatis setelah daftar
+        // Assign default role 'public'
+        $user->assignRole('public');
+
+        event(new Registered($user));
+
         Auth::login($user);
 
-        return redirect('/')->with('success', 'Registrasi berhasil!');
+        return redirect(route('user.dashboard', absolute: false));
     }
 }
