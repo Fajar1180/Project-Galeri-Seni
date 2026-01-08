@@ -105,6 +105,7 @@
     </style>
 </head>
 <body>
+    @include('partials.back-button')
     <div class="register-container">
         <div class="logo-area">
             <i class="fas fa-palette"></i>

@@ -117,6 +117,20 @@
             </div>
         </div>
     </div>
+
+    @can('manage users')
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-users"></i> Users</h5>
+            </div>
+            <div class="card-body text-center">
+                <h1 class="display-4">{{ $stats['users'] }}</h1>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-sm btn-outline-primary">Kelola Users</a>
+            </div>
+        </div>
+    </div>
+    @endcan
 </div>
 
 <div class="card mt-4">

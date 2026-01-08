@@ -15,6 +15,7 @@
     </style>
 </head>
 <body>
+    @include('partials.back-button')
     <nav class="navbar navbar-light bg-white rounded shadow-sm mb-4">
         <div class="container">
             <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">
@@ -49,7 +50,10 @@
                 @foreach($items as $item)
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="https://picsum.photos/400/300?random={{ $loop->index + 40 }}" class="museum-img card-img-top">
+                            @php
+                                $museumImage = !empty($item->image) ? asset('storage/' . $item->image) : 'https://via.placeholder.com/400x300?text=Koleksi';
+                            @endphp
+                            <img src="{{ $museumImage }}" class="museum-img card-img-top" alt="{{ $item->title ?? 'Koleksi' }}">
                             <div class="card-body">
                                 <span class="archive-badge mb-3 d-inline-block">
                                     <i class="fas fa-archive"></i> Arsip

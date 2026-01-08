@@ -184,6 +184,7 @@
     </style>
 </head>
 <body>
+    @include('partials.back-button')
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">

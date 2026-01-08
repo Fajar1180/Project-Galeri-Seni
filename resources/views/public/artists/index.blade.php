@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+    @include('partials.back-button')
     <nav class="navbar navbar-light bg-white rounded shadow-sm mb-4">
         <div class="container">
             <a class="navbar-brand fw-bold text-primary" href="{{ route('home') }}">
@@ -49,8 +50,13 @@
                     <div class="col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body d-flex align-items-center">
-                                <img src="https://ui-avatars.com/api/?name={{ urlencode($item->name ?? 'Artist') }}&size=200&background=f093fb&color=fff" 
-                                     class="artist-avatar me-4" alt="Artist">
+                                @if(!empty($item->image))
+                                    <img src="{{ asset('storage/' . $item->image) }}" 
+                                         class="artist-avatar me-4" alt="{{ $item->name }}">
+                                @else
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($item->name ?? 'Artist') }}&size=200&background=f093fb&color=fff" 
+                                         class="artist-avatar me-4" alt="Artist">
+                                @endif
                                 <div class="flex-grow-1">
                                     <h4 class="mb-2">{{ $item->name ?? 'Seniman ' . ($loop->index + 1) }}</h4>
                                     <p class="text-muted mb-2"><i class="fas fa-briefcase"></i> {{ $item->specialization ?? 'Seniman' }}</p>

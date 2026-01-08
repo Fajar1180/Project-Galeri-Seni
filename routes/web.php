@@ -32,6 +32,7 @@ use App\Http\Controllers\Admin\AuctionController as AdminAuctionController;
 use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\CollectionController as AdminCollectionController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,26 +111,37 @@ Route::middleware(['auth', 'role:super-admin|staff-admin'])->prefix('admin')->na
     // Resource Routes - CRUD Lengkap untuk Setiap Modul
 
     // Modul A: Manajemen Karya Seni (Artworks)
-    Route::resource('artworks', AdminArtworkController::class);
+    Route::resource('artworks', AdminArtworkController::class)
+        ->middleware('permission:manage artworks');
 
     // Modul B: Manajemen Seniman & Kurator (Artists)
-    Route::resource('artists', AdminArtistController::class);
+    Route::resource('artists', AdminArtistController::class)
+        ->middleware('permission:manage artists');
 
     // Modul C: Manajemen Pameran (Exhibitions)
-    Route::resource('exhibitions', AdminExhibitionController::class);
+    Route::resource('exhibitions', AdminExhibitionController::class)
+        ->middleware('permission:manage exhibitions');
 
     // Modul D: Manajemen Lelang (Auctions)
-    Route::resource('auctions', AdminAuctionController::class);
+    Route::resource('auctions', AdminAuctionController::class)
+        ->middleware('permission:manage auctions');
 
     // Modul E: Manajemen Artikel (Articles)
-    Route::resource('articles', AdminArticleController::class);
+    Route::resource('articles', AdminArticleController::class)
+        ->middleware('permission:manage articles');
 
     // Modul F: Manajemen Komentar (Comments) - Hanya index, show, destroy
     Route::resource('comments', AdminCommentController::class)
-        ->only(['index', 'show', 'destroy']);
+        ->only(['index', 'show', 'destroy'])
+        ->middleware('permission:manage comments');
 
     // Modul G: Manajemen Koleksi Museum (Collections)
-    Route::resource('collections', AdminCollectionController::class);
+    Route::resource('collections', AdminCollectionController::class)
+        ->middleware('permission:manage collections');
+
+    // Modul H: Manajemen User (Hanya Super Admin)
+    Route::resource('users', AdminUserController::class)
+        ->middleware('permission:manage users');
 
     // Optional: Route tambahan untuk approve/reject comment
     Route::post('comments/{comment}/approve', [AdminCommentController::class, 'approve'])->name('comments.approve');

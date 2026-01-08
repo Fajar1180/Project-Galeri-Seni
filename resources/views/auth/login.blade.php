@@ -9,9 +9,10 @@
     <style>
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .login-container {
@@ -137,6 +138,7 @@
     </style>
 </head>
 <body>
+    @include('partials.back-button')
     <div class="login-container">
         <div class="logo-area">
             <i class="fas fa-palette"></i>
@@ -160,8 +162,16 @@
             {{-- Email Input --}}
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" 
-                       value="{{ old('email') }}" placeholder="Masukkan email Anda" required autofocus>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control @error('email') is-invalid @enderror"
+                    value="{{ old('email') }}"
+                    placeholder="Masukkan email Anda"
+                    required
+                    autofocus
+                >
                 @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -170,8 +180,14 @@
             {{-- Password Input --}}
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" 
-                       placeholder="Masukkan password Anda" required>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control @error('password') is-invalid @enderror"
+                    placeholder="Masukkan password Anda"
+                    required
+                >
                 @error('password')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

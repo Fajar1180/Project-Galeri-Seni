@@ -40,27 +40,54 @@
                 <a class="nav-link {{ request()->is('admin/dashboard*') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
-                <a class="nav-link {{ request()->is('admin/artworks*') ? 'active' : '' }}" href="{{ route('admin.artworks.index') }}">
-                    <i class="fas fa-image"></i> Karya Seni
-                </a>
-                <a class="nav-link {{ request()->is('admin/artists*') ? 'active' : '' }}" href="{{ route('admin.artists.index') }}">
-                    <i class="fas fa-users"></i> Seniman & Kurator
-                </a>
-                <a class="nav-link {{ request()->is('admin/exhibitions*') ? 'active' : '' }}" href="{{ route('admin.exhibitions.index') }}">
-                    <i class="fas fa-calendar-alt"></i> Jadwal Pameran
-                </a>
-                <a class="nav-link {{ request()->is('admin/auctions*') ? 'active' : '' }}" href="{{ route('admin.auctions.index') }}">
-                    <i class="fas fa-gavel"></i> Lelang Karya
-                </a>
-                <a class="nav-link {{ request()->is('admin/articles*') ? 'active' : '' }}" href="{{ route('admin.articles.index') }}">
-                    <i class="fas fa-newspaper"></i> Artikel & Ulasan
-                </a>
-                <a class="nav-link {{ request()->is('admin/comments*') ? 'active' : '' }}" href="{{ route('admin.comments.index') }}">
-                    <i class="fas fa-comments"></i> Buku Tamu
-                </a>
-                <a class="nav-link {{ request()->is('admin/collections*') ? 'active' : '' }}" href="{{ route('admin.collections.index') }}">
-                    <i class="fas fa-archive"></i> Koleksi Museum
-                </a>
+
+                @can('manage artworks')
+                    <a class="nav-link {{ request()->is('admin/artworks*') ? 'active' : '' }}" href="{{ route('admin.artworks.index') }}">
+                        <i class="fas fa-image"></i> Karya Seni
+                    </a>
+                @endcan
+
+                @can('manage artists')
+                    <a class="nav-link {{ request()->is('admin/artists*') ? 'active' : '' }}" href="{{ route('admin.artists.index') }}">
+                        <i class="fas fa-users"></i> Seniman & Kurator
+                    </a>
+                @endcan
+
+                @can('manage exhibitions')
+                    <a class="nav-link {{ request()->is('admin/exhibitions*') ? 'active' : '' }}" href="{{ route('admin.exhibitions.index') }}">
+                        <i class="fas fa-calendar-alt"></i> Jadwal Pameran
+                    </a>
+                @endcan
+
+                @can('manage auctions')
+                    <a class="nav-link {{ request()->is('admin/auctions*') ? 'active' : '' }}" href="{{ route('admin.auctions.index') }}">
+                        <i class="fas fa-gavel"></i> Lelang Karya
+                    </a>
+                @endcan
+
+                @can('manage articles')
+                    <a class="nav-link {{ request()->is('admin/articles*') ? 'active' : '' }}" href="{{ route('admin.articles.index') }}">
+                        <i class="fas fa-newspaper"></i> Artikel & Ulasan
+                    </a>
+                @endcan
+
+                @can('manage comments')
+                    <a class="nav-link {{ request()->is('admin/comments*') ? 'active' : '' }}" href="{{ route('admin.comments.index') }}">
+                        <i class="fas fa-comments"></i> Buku Tamu
+                    </a>
+                @endcan
+
+                @can('manage collections')
+                    <a class="nav-link {{ request()->is('admin/collections*') ? 'active' : '' }}" href="{{ route('admin.collections.index') }}">
+                        <i class="fas fa-archive"></i> Koleksi Museum
+                    </a>
+                @endcan
+
+                @can('manage users')
+                    <a class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
+                        <i class="fas fa-user-cog"></i> Manajemen User
+                    </a>
+                @endcan
             </nav>
         </div>
 
@@ -91,6 +118,7 @@
 
             <!-- Content -->
             <main class="p-4">
+                @include('partials.back-button')
                 @if(session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}

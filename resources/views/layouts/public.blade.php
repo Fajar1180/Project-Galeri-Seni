@@ -103,6 +103,7 @@
 
     <!-- Content -->
     <main>
+        @include('partials.back-button')
         @if(session('success'))
             <div class="container mt-3">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">

@@ -24,6 +24,7 @@ class RolePermissionSeeder extends Seeder
             'manage articles',
             'manage comments',
             'manage collections',
+            'manage users',
             'view public content',
         ];
 
@@ -43,6 +44,8 @@ class RolePermissionSeeder extends Seeder
             'manage auctions',
             'manage articles',
             'manage collections',
+            // Catatan: staff-admin TIDAK punya permission 'manage users'
+            // Hanya super-admin yang bisa mengelola user
         ]);
 
         $publicRole = Role::firstOrCreate(['name' => 'public']);

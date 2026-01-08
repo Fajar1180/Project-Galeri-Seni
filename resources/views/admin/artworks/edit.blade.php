@@ -146,13 +146,6 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type
-                        <invoke name="artifacts">
-<parameter name="command">update</parameter>
-<parameter name="id">module_a_crud_complete</parameter>
-<parameter name="old_str">                    <div class="form-check">
-                        <input class="form-check-input" type</parameter>
-<parameter name="new_str">                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="status" id="on_display" 
                                value="on_display" {{ old('status', $artwork->status) == 'on_display' ? 'checked' : '' }}>
                         <label class="form-check-label" for="on_display">

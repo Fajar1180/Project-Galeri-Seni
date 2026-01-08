@@ -10,6 +10,7 @@ use App\Models\Auction;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Collection;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -23,8 +24,9 @@ class DashboardController extends Controller
             'articles' => Article::count(),
             'comments' => Comment::count(),
             'collections' => Collection::count(),
+            'users' => User::count(),
         ];
-        
+
         return view('admin.dashboard', compact('stats'));
     }
 }

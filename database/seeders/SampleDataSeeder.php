@@ -32,9 +32,9 @@ class SampleDataSeeder extends Seeder
 
     // Artworks
     $artworksData = [
-      ['title' => 'Penangkapan Diponegoro', 'description' => 'Lukisan sejarah penting.', 'medium' => 'Oil on canvas', 'year' => 1957, 'dimensions' => '112x179cm', 'price' => 500000000, 'status' => 'on_display', 'image' => 'artworks/default.jpg'],
-      ['title' => 'Potret Diri', 'description' => 'Self portrait ekspresionisme.', 'medium' => 'Oil on canvas', 'year' => 1977, 'dimensions' => '100x80cm', 'price' => 150000000, 'status' => 'available', 'image' => 'artworks/default.jpg'],
-      ['title' => 'Pemandangan Merapi', 'description' => 'Lukisan pemandangan alam.', 'medium' => 'Oil on canvas', 'year' => 1965, 'dimensions' => '90x120cm', 'price' => 250000000, 'status' => 'available', 'image' => 'artworks/default.jpg'],
+      ['title' => 'Penangkapan Diponegoro', 'description' => 'Lukisan sejarah penting.', 'medium' => 'Oil on canvas', 'year' => 1957, 'dimensions' => '112x179cm', 'price' => 500000000, 'status' => 'on_display', 'image' => 'artworks/default.svg'],
+      ['title' => 'Potret Diri', 'description' => 'Self portrait ekspresionisme.', 'medium' => 'Oil on canvas', 'year' => 1977, 'dimensions' => '100x80cm', 'price' => 150000000, 'status' => 'available', 'image' => 'artworks/default.svg'],
+      ['title' => 'Pemandangan Merapi', 'description' => 'Lukisan pemandangan alam.', 'medium' => 'Oil on canvas', 'year' => 1965, 'dimensions' => '90x120cm', 'price' => 250000000, 'status' => 'available', 'image' => 'artworks/default.svg'],
     ];
 
     foreach ($artworksData as $i => $data) {
@@ -84,8 +84,8 @@ class SampleDataSeeder extends Seeder
 
     // Collections
     $collectionsData = [
-      ['title' => 'Keris Majapahit', 'collection_number' => 'KRS-001', 'description' => 'Keris bersejarah dari Majapahit.', 'category' => 'lainnya', 'year' => 1950, 'origin' => 'Majapahit', 'material' => 'Besi', 'dimensions' => '40x5cm', 'image' => 'collections/default.jpg'],
-      ['title' => 'Lukisan Pertempuran Surabaya', 'collection_number' => 'LKS-001', 'description' => 'Lukisan dokumenter pertempuran.', 'category' => 'lukisan', 'year' => 1946, 'origin' => 'Museum Nasional', 'material' => 'Cat minyak', 'dimensions' => '200x300cm', 'image' => 'collections/default.jpg'],
+      ['title' => 'Keris Majapahit', 'collection_number' => 'KRS-001', 'description' => 'Keris bersejarah dari Majapahit.', 'category' => 'lainnya', 'year' => 1950, 'origin' => 'Majapahit', 'material' => 'Besi', 'dimensions' => '40x5cm', 'image' => 'collections/default.svg'],
+      ['title' => 'Lukisan Pertempuran Surabaya', 'collection_number' => 'LKS-001', 'description' => 'Lukisan dokumenter pertempuran.', 'category' => 'lukisan', 'year' => 1946, 'origin' => 'Museum Nasional', 'material' => 'Cat minyak', 'dimensions' => '200x300cm', 'image' => 'collections/default.svg'],
     ];
 
     foreach ($collectionsData as $data) {

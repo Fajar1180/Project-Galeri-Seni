@@ -1,66 +1,153 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project: Gallery Art Lelang (UAS - Galeri Seni Digital)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Mata Kuliah:** Pemrograman Berbasis Web
 
-## About Laravel
+**Dosen Pengampu:** Adam Husain, ST., M.Kom.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Waktu Pengumpulan:** 30 Januari 2026
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Identitas Kelompok (Kelompok 4)
 
-## Learning Laravel
+- Julia
+- Fajar
+- Caryksha
+- Fito
+- Kiara
+- Aal Maulana
+- Ilham
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Deskripsi Singkat
+Proyek ini adalah Sistem Informasi Galeri Seni Digital & Manajemen Pameran yang dibangun menggunakan Laravel (tema kelompok: Seni Rupa & Desain Kreatif). Sistem menyediakan:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Halaman Publik: menampilkan katalog karya seni, profil seniman, jadwal pameran, halaman lelang, artikel, koleksi museum, dan buku tamu.
+- Halaman Admin: panel CRUD untuk mengelola karya seni, seniman, pameran, lelang, artikel, komentar, dan koleksi museum.
+- Autentikasi dan Role-Based Access Control (Spatie Laravel Permission) dengan role `super-admin`, `staff-admin`, dan `public`.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Modul (Opsi individual yang bisa dibagi ke anggota)
 
-### Premium Partners
+1. Katalog Karya Seni (Artwork Database) — Frontend: Virtual Gallery / Backend: CRUD Artwork
+2. Profil Seniman & Kurator — Frontend: Artist Bio / Backend: CRUD Artist
+3. Jadwal Pameran / Exhibition — Frontend: Calendar / Backend: CRUD Exhibition
+4. Manajemen Lelang Karya — Frontend: Bidding Simulation / Backend: CRUD Auction
+5. Artikel Kritik & Ulasan Seni — Frontend: Blog / Backend: CRUD Article
+6. Buku Tamu & Komentar — Frontend: Wall of Comment / Backend: CRUD Comment
+7. Koleksi Museum / Arsip — Frontend: Museum Online / Backend: CRUD Collection
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+> Catatan: Silakan susun pembagian tugas internal kelompok sesuai kesepakatan.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Akun Dummy (seeders)
+- Super Admin: `admin@gallery.com` / `password123`
+- Staff Admin: `staff@gallery.com` / `password123`
+- Public/User: `user@example.com` / `password123`
 
-## Code of Conduct
+Seeder yang membuat role & sample user:
+`database/seeders/RolePermissionSeeder.php`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Seeder sample data:
+`database/seeders/SampleDataSeeder.php`
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Persyaratan & Teknologi
 
-## License
+- Framework: Laravel 10.x
+- Package hak akses: `spatie/laravel-permission`
+- Database: MySQL / MariaDB
+- Frontend: Bootstrap 5 (publik) + AdminLTE (admin)
+- Storage: upload file ke disk `public` (disimpan di `storage/app/public`), symlink `public/storage`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Instalasi & Jalankan (lokal)
+
+1. Clone repository
+
+```bash
+git clone <repo-url>
+cd gallery_art_lelang
+```
+
+2. Install dependency PHP
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+3. Konfigurasi database
+
+- Edit file `.env` dan isi `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` sesuai MySQL Anda.
+
+4. Migrasi & Seed data
+
+```bash
+php artisan migrate
+php artisan db:seed --class=RolePermissionSeeder
+php artisan db:seed --class=SampleDataSeeder
+```
+
+5. Buat symlink storage (jika belum)
+
+```bash
+php artisan storage:link
+```
+
+6. Install frontend assets & build
+
+```bash
+npm install
+npm run build
+```
+
+7. Jalankan server lokal
+
+```bash
+php artisan serve
+```
+
+Kunjungi: `http://127.0.0.1:8000`
+
+---
+
+## Periksa Hak Akses (RBAC)
+
+- Seeder `RolePermissionSeeder` membuat permission seperti `manage artworks`, `manage artists`, `manage exhibitions`, `manage auctions`, `manage articles`, `manage comments`, `manage collections`, dan role `super-admin`, `staff-admin`, `public`.
+- Di `routes/web.php` dan sidebar admin, akses modul dibatasi menggunakan middleware `permission:manage ...` dan Blade `@can(...)` sehingga staff hanya melihat menu yang sesuai permission.
+
+Jika Anda ingin menyesuaikan permission staff, edit `database/seeders/RolePermissionSeeder.php` lalu jalankan ulang seeder (atau update role via Tinker).
+
+---
+
+## Checklist Pengumpulan
+
+- [ ] README terisi lengkap (identitas + cara instalasi + akun dummy)
+- [ ] Semua migrasi berjalan tanpa error
+- [ ] Seeder role & sample data berjalan
+- [ ] Storage symlink dibuat dan file image dapat diakses via `asset('storage/...')`
+- [ ] Role-based access diuji (login sebagai admin, staff, public)
+- [ ] Dokumentasi modul & pembagian tugas kolektif
+
+---
+
+## Catatan Pengembang / Tips
+
+- Pastikan file default/fallback image yang dipakai seeder (`artworks/default.jpg`, `collections/default.jpg`) tersedia di `storage/app/public` atau ganti path di seeder.
+- Untuk menambahkan akun anggota kelompok, tambahkan seeder atau gunakan form register (jika diizinkan) lalu assign role.
+- Jika butuh bantuan menyiapkan README final dengan NIM/nomor grup, beri detail anggota dan saya akan memperbarui.
+
+---
+
+Jika mau, saya bisa:
+- Perbarui README dengan pembagian modul per anggota (berikan mapping), atau
+- Tambahkan file placeholder gambar di `public/images` dan perbarui seeder untuk menggunakan file tersebut.
+
+Selamat mengerjakan UAS — beri tahu saya langkah selanjutnya yang Anda ingin saya kerjakan.
